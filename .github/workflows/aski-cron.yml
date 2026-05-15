@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ASKI Doluluk Verisi - GitHub Actions Cron
+------------------------------------------
+Her çalıştığında ASKI'den toplam/aktif doluluk verisini çeker
+ve data/aski_doluluk.json dosyasına zaman damgalı kayıt ekler.
+
+GitHub Actions cron: 0 */8 * * *  (günde 3 kez: 00:00, 08:00, 16:00)
+"""
+
+import requests
+from bs4 import BeautifulSoup
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+URL = "https://www.aski.gov.tr/tr/baraj.aspx"
+AJAX_URL = "https://www.aski.gov.tr/tr/Baraj.aspx/Counter1"
+DATA_FILE = Path("data/aski_doluluk.json")
+
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "tr-TR,tr;q=0.9",
+}
+
+AJAX_HEADERS = {
+    **HEADERS,
+    "Content-Type": "application/json; charset=utf-8",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "X-Requested-With": "XMLHttpRequest",
+}
+
+
+def get_ajax_values():
+    try:
+        resp = requests.post(AJAX_URL, headers=AJAX_HEADERS, data="{}", timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        payload = data.get("d", data)
+        if isinstance(payload, str):
+            payload = json.loads(payload)
+        if payload.get("success"):
+            return {
+                "toplam": float(payload.get("SonucSu")),
+                "aktif": float(payload.get("BarajDegeri")),
+            }
+    except Exception:
+        pass
+    return None
+
+
+def get_html_values(html):
+    soup = BeautifulSoup(html, "lxml")
+    tables = soup.find_all("table")
+    if not tables:
+        return None
+    rows = tables[0].find_all("tr")
+    result = {}
+    for row in rows:
+        cells = row.find_all(["td", "th"])
+        if len(cells) >= 3:
+            label = cells[0].get_text(strip=True)
+            val_2026 = cells[2].get_text(strip=True)
+            if "Toplam Doluluk Yüzdesi" in label:
+                result["toplam"] = float(
+                    re.sub(r"[^0-9.,]", "", val_2026).replace(",", ".")
+                )
+            elif "Aktif Kullanılabilir Su Yüzdesi" in label:
+                result["aktif"] = float(
+                    re.sub(r"[^0-9.,]", "", val_2026).replace(",", ".")
+                )
+    return result if result else None
+
+
+def get_date(html):
+    soup = BeautifulSoup(html, "lxml")
+    tables = soup.find_all("table")
+    if tables:
+        rows = tables[0].find_all("tr")
+        if len(rows) > 1:
+            cells = rows[1].find_all(["th", "td"])
+            if len(cells) >= 3:
+                return cells[2].get_text(strip=True)
+    return None
+
+
+def load_data():
+    if DATA_FILE.exists():
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {"veriler": []}
+
+
+def save_data(data):
+    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(DATA_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def main():
+    now = datetime.now(timezone.utc)
+
+    try:
+        resp = requests.get(URL, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+        resp.encoding = resp.apparent_encoding
+        html = resp.text
+    except requests.RequestException as e:
+        print(f"[HATA] Sayfa indirilemedi: {e}")
+        return 1
+
+    values = get_ajax_values()
+    if not values:
+        values = get_html_values(html)
+
+    if not values:
+        print("[HATA] Doluluk verileri bulunamadı.")
+        return 1
+
+    tarih = get_date(html)
+
+    data = load_data()
+
+    kayit = {
+        "timestamp": now.isoformat(),
+        "tarih_aski": tarih,
+        "toplam_doluluk": values["toplam"],
+        "aktif_doluluk": values["aktif"],
+    }
+
+    data["veriler"].append(kayit)
+    data["son_guncelleme"] = now.isoformat()
+
+    save_data(data)
+
+    print(f"[OK] Kaydedildi: {tarih} | Toplam: %{values['toplam']} | Aktif: %{values['aktif']}")
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())
+
