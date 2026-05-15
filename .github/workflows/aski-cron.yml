@@ -25,8 +25,14 @@ jobs:
       - name: Run scraper
         run: python aski_doluluk.py
 
+      - name: Generate badges
+        run: python badge_generator.py
+
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "ASKI doluluk verisi güncellendi"
-          file_pattern: "data/aski_doluluk.json"
+          commit_message: "ASKI doluluk verisi ve badge'ler guncellendi"
+          file_pattern: |
+            data/aski_doluluk.json
+            badges/*.svg
+            README.md
