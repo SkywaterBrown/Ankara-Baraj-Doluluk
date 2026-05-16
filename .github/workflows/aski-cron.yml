@@ -20,19 +20,22 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 lxml
+        run: pip install requests beautifulsoup4 lxml matplotlib
 
       - name: Run scraper
         run: python aski_doluluk.py
 
-      - name: Generate badges
-        run: python badge_generator.py
+      - name: Generate badges & charts
+        run: |
+          python badge_generator.py
+          python generate_charts.py
 
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "ASKI doluluk verisi ve badge'ler guncellendi"
+          commit_message: "ASKI doluluk verisi, badge'ler ve grafik guncellendi"
           file_pattern: |
             data/aski_doluluk.json
             badges/*.svg
+            charts/*.svg
             README.md
