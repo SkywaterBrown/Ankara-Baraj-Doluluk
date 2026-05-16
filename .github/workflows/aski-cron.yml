@@ -37,7 +37,7 @@ jobs:
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "ASKI doluluk verisi, badge'ler ve grafik guncellendi"
+          commit_message: "ASKI doluluk verisi, badge'ler ve grafik guncellendi."
           file_pattern: |
             data/aski_doluluk.json
             badges/*.svg
