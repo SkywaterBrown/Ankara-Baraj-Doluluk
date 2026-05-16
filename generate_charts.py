@@ -16,8 +16,8 @@ MAX_POINTS = 30
 
 def main():
     print("[INFO] Chart generator basladi")
-    print(f"[INFO] DATA_FILE: {DATA_FILE.absolute()}")
-    print(f"[INFO] DATA_FILE exists: {DATA_FILE.exists()}")
+    print("[INFO] DATA_FILE: {}".format(DATA_FILE.absolute()))
+    print("[INFO] DATA_FILE exists: {}".format(DATA_FILE.exists()))
 
     if not DATA_FILE.exists():
         print("[HATA] data/aski_doluluk.json bulunamadi")
@@ -27,7 +27,7 @@ def main():
         data = json.load(f)
 
     veriler = data.get("veriler", [])
-    print(f"[INFO] Kayit sayisi: {len(veriler)}")
+    print("[INFO] Kayit sayisi: {}".format(len(veriler)))
 
     if len(veriler) < 2:
         print("[UYARI] Grafik icin en az 2 kayit gerekli")
@@ -54,7 +54,7 @@ def main():
             continue
         points.append((dt, float(toplam), float(aktif)))
 
-    print(f"[INFO] Gecerli nokta sayisi: {len(points)}")
+    print("[INFO] Gecerli nokta sayisi: {}".format(len(points)))
 
     if len(points) < 2:
         print("[HATA] Gecerli veri yok")
@@ -62,9 +62,9 @@ def main():
 
     # SVG boyutlari
     width, height = 800, 400
-    margin = {"top": 40, "right": 40, "bottom": 80, "left": 60}
-    chart_w = width - margin["left"] - margin["right"]
-    chart_h = height - margin["top"] - margin["bottom"]
+    margin_top, margin_right, margin_bottom, margin_left = 40, 40, 80, 60
+    chart_w = width - margin_left - margin_right
+    chart_h = height - margin_top - margin_bottom
 
     # Olcekleme
     min_t = points[0][0].timestamp()
@@ -72,14 +72,14 @@ def main():
     time_range = max_t - min_t if max_t != min_t else 1
 
     def sx(dt):
-        return margin["left"] + ((dt.timestamp() - min_t) / time_range) * chart_w
+        return margin_left + ((dt.timestamp() - min_t) / time_range) * chart_w
 
     def sy(val):
-        return margin["top"] + chart_h - (val / 100) * chart_h
+        return margin_top + chart_h - (val / 100) * chart_h
 
     # Polyline noktalari
-    toplam_pts = " ".join(f"{sx(dt):.1f},{sy(t):.1f}" for dt, t, a in points)
-    aktif_pts = " ".join(f"{sx(dt):.1f},{sy(a):.1f}" for dt, t, a in points)
+    toplam_pts = " ".join("{:.1f},{:.1f}".format(sx(dt), sy(t)) for dt, t, a in points)
+    aktif_pts = " ".join("{:.1f},{:.1f}".format(sx(dt), sy(a)) for dt, t, a in points)
 
     # X ekseni etiketleri
     x_labels = []
@@ -87,68 +87,79 @@ def main():
     for i in range(0, len(points), step):
         dt, _, _ = points[i]
         label = dt.strftime("%d.%m %H:%M")
-        x_labels.append(f'<text x="{sx(dt):.1f}" y="{height - 20}" text-anchor="middle" font-size="10" fill="#888">{label}</text>')
+        x_labels.append('<text x="{:.1f}" y="{}" text-anchor="middle" font-size="10" fill="#888">{}</text>'.format(sx(dt), height - 20, label))
 
     # Y grid ve etiketler
     y_grid = []
     for val in range(0, 101, 20):
         y = sy(val)
-        y_grid.append(f'<line x1="{margin["left"]}" y1="{y:.1f}" x2="{width - margin["right"]}" y2="{y:.1f}" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>')
-        y_grid.append(f'<text x="{margin["left"] - 10}" y="{y:.1f}" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">{val}%</text>')
+        y_grid.append('<line x1="{}" y1="{:.1f}" x2="{}" y2="{:.1f}" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>'.format(margin_left, y, width - margin_right, y))
+        y_grid.append('<text x="{}" y="{:.1f}" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">{}%</text>'.format(margin_left - 10, y, val))
 
     # Referans cizgileri
     ref_lines = []
     for val, color, label in [(30, "#ef4444", "Kritik"), (50, "#eab308", "Normal")]:
         y = sy(val)
-        ref_lines.append(f'<line x1="{margin["left"]}" y1="{y:.1f}" x2="{width - margin["right"]}" y2="{y:.1f}" stroke="{color}" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>')
-        ref_lines.append(f'<text x="{width - margin["right"] + 5}" y="{y:.1f}" dominant-baseline="middle" font-size="9" fill="{color}">{label} ({val}%)</text>')
+        ref_lines.append('<line x1="{}" y1="{:.1f}" x2="{}" y2="{:.1f}" stroke="{}" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>'.format(margin_left, y, width - margin_right, y, color))
+        ref_lines.append('<text x="{}" y="{:.1f}" dominant-baseline="middle" font-size="9" fill="{}">{} ({}%)</text>'.format(width - margin_right + 5, y, color, label, val))
 
     # Noktalar (circle)
-    toplam_circles = "".join(f'<circle cx="{sx(dt):.1f}" cy="{sy(t):.1f}" r="3" fill="#22c55e"/>' for dt, t, a in points)
-    aktif_circles = "".join(f'<circle cx="{sx(dt):.1f}" cy="{sy(a):.1f}" r="3" fill="#3b82f6"/>' for dt, t, a in points)
+    toplam_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#22c55e"/>'.format(sx(dt), sy(t)) for dt, t, a in points)
+    aktif_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#3b82f6"/>'.format(sx(dt), sy(a)) for dt, t, a in points)
 
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="100%" style="max-width:{width}px;">
-  <rect width="{width}" height="{height}" fill="#0d1117" rx="6"/>
-  <text x="{width/2}" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#c9d1d9">Ankara Baraj Doluluk Trendi</text>
+    svg_parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {} {}" width="100%" style="max-width:{}px;">'.format(width, height, width),
+        '  <rect width="{}" height="{}" fill="#0d1117" rx="6"/>'.format(width, height),
+        '  <text x="{}" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#c9d1d9">Ankara Baraj Doluluk Trendi</text>',
+        '',
+        '  <!-- Y grid -->',
+    ]
+    for line in y_grid:
+        svg_parts.append("  " + line)
 
-  <!-- Y grid -->
-  {"
-  ".join(y_grid)}
+    svg_parts.append('')
+    svg_parts.append('  <!-- Referans cizgileri -->')
+    for line in ref_lines:
+        svg_parts.append("  " + line)
 
-  <!-- Referans cizgileri -->
-  {"
-  ".join(ref_lines)}
+    svg_parts.extend([
+        '',
+        '  <!-- Toplam doluluk -->',
+        '  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts),
+        '  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts),
+        '',
+        '  <!-- Aktif doluluk -->',
+        '  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts),
+        '  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts),
+        '',
+        '  <!-- Noktalar -->',
+        '  ' + toplam_circles,
+        '  ' + aktif_circles,
+        '',
+        '  <!-- X ekseni -->',
+    ])
+    for line in x_labels:
+        svg_parts.append("  " + line)
 
-  <!-- Toplam doluluk -->
-  <polyline points="{toplam_pts}" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="{toplam_pts}" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+    svg_parts.extend([
+        '',
+        '  <!-- Legend -->',
+        '  <g transform="translate({}, {})">'.format(margin_left, height - 55),
+        '    <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>',
+        '    <text x="18" y="10" font-size="11" fill="#c9d1d9">Toplam Doluluk</text>',
+        '    <rect x="140" y="0" width="12" height="12" fill="#3b82f6" rx="2"/>',
+        '    <text x="158" y="10" font-size="11" fill="#c9d1d9">Aktif Doluluk</text>',
+        '  </g>',
+        '</svg>',
+    ])
 
-  <!-- Aktif doluluk -->
-  <polyline points="{aktif_pts}" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="{aktif_pts}" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Noktalar -->
-  {toplam_circles}
-  {aktif_circles}
-
-  <!-- X ekseni -->
-  {"
-  ".join(x_labels)}
-
-  <!-- Legend -->
-  <g transform="translate({margin["left"]}, {height - 55})">
-    <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>
-    <text x="18" y="10" font-size="11" fill="#c9d1d9">Toplam Doluluk</text>
-    <rect x="140" y="0" width="12" height="12" fill="#3b82f6" rx="2"/>
-    <text x="158" y="10" font-size="11" fill="#c9d1d9">Aktif Doluluk</text>
-  </g>
-</svg>'''
+    svg = "\n".join(svg_parts)
 
     CHART_DIR.mkdir(parents=True, exist_ok=True)
     chart_path = CHART_DIR / "doluluk-trend.svg"
     with open(chart_path, "w", encoding="utf-8") as f:
         f.write(svg)
-    print(f"[OK] Chart yazildi: {chart_path.absolute()}")
+    print("[OK] Chart yazildi: {}".format(chart_path.absolute()))
     return 0
 
 
