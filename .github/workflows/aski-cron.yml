@@ -20,15 +20,19 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 lxml matplotlib
+        run: pip install requests beautifulsoup4 lxml
 
       - name: Run scraper
         run: python aski_doluluk.py
 
       - name: Generate badges & charts
         run: |
+          set -x
           python badge_generator.py
           python generate_charts.py
+          ls -la badges/ || echo "badges/ klasoru yok"
+          ls -la charts/ || echo "charts/ klasoru yok"
+          cat README.md | head -n 5
 
       - name: Commit & push
         uses: stefanzweifel/git-auto-commit-action@v5
