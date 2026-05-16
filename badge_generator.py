@@ -2,83 +2,83 @@
 # -*- coding: utf-8 -*-
 """
 ASKI Doluluk SVG Badge Generator
----------------------------------
-README'de gostermek icin toplam/aktif doluluk degerlerini
-ve tarih badge'ini SVG olarak olusturur.
 """
 
 import json
 from pathlib import Path
-from datetime import datetime
 
 DATA_FILE = Path("data/aski_doluluk.json")
 BADGE_DIR = Path("badges")
 
 
 def get_color(value: float) -> str:
-    """Deger araligina gore renk dondurur."""
     if value >= 50:
-        return "#22c55e"  # yesil
+        return "#22c55e"
     elif value >= 30:
-        return "#eab308"  # sari
+        return "#eab308"
     else:
-        return "#ef4444"  # kirmizi
+        return "#ef4444"
 
 
-def estimate_text_width(text: str, char_width: float = 6.5) -> int:
-    """Metin genisligini daha dogru hesapla."""
-    return int(len(text) * char_width) + 20
+def text_width(text: str, approx: float = 6.5) -> int:
+    return int(len(text) * approx) + 24
 
 
 def create_badge(label: str, value: str, color: str = "#555") -> str:
-    """SVG badge string olusturur."""
-    label_width = estimate_text_width(label)
-    value_width = estimate_text_width(value, char_width=7.5)
-    total_width = label_width + value_width
+    lw = text_width(label)
+    vw = text_width(value, 7.5)
+    tw = lw + vw
 
-    svg = f"""<<svg xmlns="http://www.w3.org/2000/svg" width="{total_width}" height="20" role="img" aria-label="{label}: {value}">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{tw}" height="20" role="img" aria-label="{label}: {value}">
   <linearGradient id="s" x2="0" y2="100%">
     <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
   <clipPath id="r">
-    <rect width="{total_width}" height="20" rx="3" fill="#fff"/>
+    <rect width="{tw}" height="20" rx="3" fill="#fff"/>
   </clipPath>
   <g clip-path="url(#r)">
-    <rect width="{label_width}" height="20" fill="#555"/>
-    <rect x="{label_width}" width="{value_width}" height="20" fill="{color}"/>
-    <rect width="{total_width}" height="20" fill="url(#s)"/>
+    <rect width="{lw}" height="20" fill="#555"/>
+    <rect x="{lw}" width="{vw}" height="20" fill="{color}"/>
+    <rect width="{tw}" height="20" fill="url(#s)"/>
   </g>
   <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
-    <text x="{label_width/2}" y="14" fill="#010101" fill-opacity=".3">{label}</text>
-    <text x="{label_width/2}" y="13">{label}</text>
-    <text x="{label_width + value_width/2}" y="14" fill="#010101" fill-opacity=".3">{value}</text>
-    <text x="{label_width + value_width/2}" y="13">{value}</text>
+    <text x="{lw/2}" y="14" fill="#010101" fill-opacity=".3">{label}</text>
+    <text x="{lw/2}" y="13">{label}</text>
+    <text x="{lw + vw/2}" y="14" fill="#010101" fill-opacity=".3">{value}</text>
+    <text x="{lw + vw/2}" y="13">{value}</text>
   </g>
-</svg>"""
-    return svg
+</svg>'''
 
 
 def main():
+    print("[INFO] Badge generator basladi")
+    print(f"[INFO] DATA_FILE: {DATA_FILE.absolute()}")
+    print(f"[INFO] DATA_FILE exists: {DATA_FILE.exists()}")
+
     if not DATA_FILE.exists():
-        print("[HATA] Veri dosyasi bulunamadi")
+        print("[HATA] data/aski_doluluk.json bulunamadi")
         return 1
 
     with open(DATA_FILE, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    if not data.get("veriler"):
-        print("[HATA] Veri yok")
+    veriler = data.get("veriler", [])
+    print(f"[INFO] Kayit sayisi: {len(veriler)}")
+
+    if not veriler:
+        print("[HATA] Veri listesi bos")
         return 1
 
-    latest = data["veriler"][-1]
+    latest = veriler[-1]
     toplam = latest["toplam_doluluk"]
     aktif = latest["aktif_doluluk"]
     tarih = latest.get("tarih_aski", "Bilinmiyor")
 
+    print(f"[INFO] Son veri: {tarih} | Toplam: {toplam}% | Aktif: {aktif}%")
+
     BADGE_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Badge'leri olustur
     badges = {
         "toplam-doluluk.svg": create_badge("Toplam Doluluk", f"{toplam:.1f}%", get_color(toplam)),
         "aktif-doluluk.svg": create_badge("Aktif Doluluk", f"{aktif:.1f}%", get_color(aktif)),
@@ -89,37 +89,38 @@ def main():
         filepath = BADGE_DIR / filename
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(svg)
-        print(f"[OK] {filepath}")
+        print(f"[OK] Badge yazildi: {filepath.absolute()}")
 
-    # README badge satirlarini guncelle
-    readme_lines = [
-        "# Ankara Baraj Doluluk Oranlari",
-        "",
-        f"![Toplam Doluluk](badges/toplam-doluluk.svg)",
-        f"![Aktif Doluluk](badges/aktif-doluluk.svg)",
-        f"![Tarih](badges/tarih.svg)",
-        "",
-        "## Doluluk Trendi",
-        "",
-        "![Doluluk Grafiği](charts/doluluk-trend.svg)",
-        "",
-        "> ASKI verileri ile otomatik guncellenir. Her 8 saatte bir yenilenir.",
-        "",
-        "## Kaynak",
-        "- [aski.gov.tr - Baraj Doluluk Oranlari](https://www.aski.gov.tr/tr/baraj.aspx)",
-        "",
-        "## Son Veri",
-        "```json",
-        json.dumps(latest, ensure_ascii=False, indent=2),
-        "```",
-    ]
+    # README'yi yeniden yaz
+    readme_content = f"""# Ankara Baraj Doluluk Oranlari
 
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.write("\n".join(readme_lines))
+![Toplam Doluluk](badges/toplam-doluluk.svg)
+![Aktif Doluluk](badges/aktif-doluluk.svg)
+![Tarih](badges/tarih.svg)
 
-    print("[OK] README.md guncellendi")
+## Doluluk Trendi
+
+![Doluluk Grafiği](charts/doluluk-trend.svg)
+
+> ASKI verileri ile otomatik guncellenir. Her 8 saatte bir yenilenir.
+
+## Kaynak
+- [aski.gov.tr - Baraj Doluluk Oranlari](https://www.aski.gov.tr/tr/baraj.aspx)
+
+## Son Veri
+```json
+{json.dumps(latest, ensure_ascii=False, indent=2)}
+```
+"""
+
+    readme_path = Path("README.md")
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(readme_content)
+    print(f"[OK] README.md yazildi: {readme_path.absolute()}")
+
     return 0
 
 
 if __name__ == "__main__":
     exit(main())
+
