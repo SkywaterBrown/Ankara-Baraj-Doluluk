@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -30,16 +32,22 @@ jobs:
           set -x
           python badge_generator.py
           python generate_charts.py
+          echo "--- badges ---"
           ls -la badges/ || echo "badges/ klasoru yok"
+          echo "--- charts ---"
           ls -la charts/ || echo "charts/ klasoru yok"
-          cat README.md | head -n 5
+          echo "--- README basi ---"
+          head -n 10 README.md
 
       - name: Commit & push
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "ASKI doluluk verisi, badge'ler ve grafik guncellendi."
-          file_pattern: |
-            data/aski_doluluk.json
-            badges/*.svg
-            charts/*.svg
-            README.md
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/aski_doluluk.json badges/ charts/ README.md
+          if git diff --staged --quiet; then
+            echo "[INFO] Degisiklik yok, commit atlaniyor"
+          else
+            git commit -m "ASKI doluluk verisi, badge'ler ve grafik guncellendi [bot]"
+            git push
+            echo "[OK] Commit ve push tamamlandi"
+          fi
