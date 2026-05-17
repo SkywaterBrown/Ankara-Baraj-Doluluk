@@ -29,7 +29,7 @@ def create_badge(label: str, value: str, color: str = "#555") -> str:
     vw = text_width(value, 7.5)
     tw = lw + vw
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{tw}" height="20" role="img" aria-label="{label}: {value}">
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{tw}" height="20" role="img" aria-label="{label}: {value}">
   <linearGradient id="s" x2="0" y2="100%">
     <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
     <stop offset="1" stop-opacity=".1"/>
@@ -48,13 +48,13 @@ def create_badge(label: str, value: str, color: str = "#555") -> str:
     <text x="{lw + vw/2}" y="14" fill="#010101" fill-opacity=".3">{value}</text>
     <text x="{lw + vw/2}" y="13">{value}</text>
   </g>
-</svg>'''
+</svg>"""
 
 
 def main():
     print("[INFO] Badge generator basladi")
-    print(f"[INFO] DATA_FILE: {DATA_FILE.absolute()}")
-    print(f"[INFO] DATA_FILE exists: {DATA_FILE.exists()}")
+    print("[INFO] DATA_FILE: {}".format(DATA_FILE.absolute()))
+    print("[INFO] DATA_FILE exists: {}".format(DATA_FILE.exists()))
 
     if not DATA_FILE.exists():
         print("[HATA] data/aski_doluluk.json bulunamadi")
@@ -64,7 +64,7 @@ def main():
         data = json.load(f)
 
     veriler = data.get("veriler", [])
-    print(f"[INFO] Kayit sayisi: {len(veriler)}")
+    print("[INFO] Kayit sayisi: {}".format(len(veriler)))
 
     if not veriler:
         print("[HATA] Veri listesi bos")
@@ -75,13 +75,13 @@ def main():
     aktif = latest["aktif_doluluk"]
     tarih = latest.get("tarih_aski", "Bilinmiyor")
 
-    print(f"[INFO] Son veri: {tarih} | Toplam: {toplam}% | Aktif: {aktif}%")
+    print("[INFO] Son veri: {} | Toplam: {}% | Aktif: {}%".format(tarih, toplam, aktif))
 
     BADGE_DIR.mkdir(parents=True, exist_ok=True)
 
     badges = {
-        "toplam-doluluk.svg": create_badge("Toplam Doluluk", f"{toplam:.1f}%", get_color(toplam)),
-        "aktif-doluluk.svg": create_badge("Aktif Doluluk", f"{aktif:.1f}%", get_color(aktif)),
+        "toplam-doluluk.svg": create_badge("Toplam Doluluk", "{:.1f}%".format(toplam), get_color(toplam)),
+        "aktif-doluluk.svg": create_badge("Aktif Doluluk", "{:.1f}%".format(aktif), get_color(aktif)),
         "tarih.svg": create_badge("Tarih", tarih, "#3b82f6"),
     }
 
@@ -89,10 +89,10 @@ def main():
         filepath = BADGE_DIR / filename
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(svg)
-        print(f"[OK] Badge yazildi: {filepath.absolute()}")
+        print("[OK] Badge yazildi: {} ({} bytes)".format(filepath.absolute(), len(svg)))
 
     # README'yi yeniden yaz
-    readme_content = f"""# Ankara Baraj Doluluk Oranlari
+    readme_content = """# Ankara Baraj Doluluk Oranlari
 
 ![Toplam Doluluk](badges/toplam-doluluk.svg)
 ![Aktif Doluluk](badges/aktif-doluluk.svg)
@@ -109,14 +109,14 @@ def main():
 
 ## Son Veri
 ```json
-{json.dumps(latest, ensure_ascii=False, indent=2)}
+{}
 ```
-"""
+""".format(json.dumps(latest, ensure_ascii=False, indent=2))
 
     readme_path = Path("README.md")
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(readme_content)
-    print(f"[OK] README.md yazildi: {readme_path.absolute()}")
+    print("[OK] README.md yazildi: {}".format(readme_path.absolute()))
 
     return 0
 
