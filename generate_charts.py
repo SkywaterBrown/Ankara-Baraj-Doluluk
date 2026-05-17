@@ -107,61 +107,55 @@ def main():
     toplam_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#22c55e"/>'.format(sx(dt), sy(t)) for dt, t, a in points)
     aktif_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#3b82f6"/>'.format(sx(dt), sy(a)) for dt, t, a in points)
 
-    svg_parts = [
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {} {}" width="100%" style="max-width:{}px;">'.format(width, height, width),
-        '  <rect width="{}" height="{}" fill="#0d1117" rx="6"/>'.format(width, height),
-        '  <text x="{}" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#c9d1d9">Ankara Baraj Doluluk Trendi</text>',
-        '',
-        '  <!-- Y grid -->',
-    ]
+    # SVG olustur - tum satirlar duzgun formatlanmis
+    svg_lines = []
+    svg_lines.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {} {}" width="100%" style="max-width:{}px;">'.format(width, height, width))
+    svg_lines.append('  <rect width="{}" height="{}" fill="#0d1117" rx="6"/>'.format(width, height))
+    svg_lines.append('  <text x="{:.1f}" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#c9d1d9">Ankara Baraj Doluluk Trendi</text>'.format(width / 2))
+    svg_lines.append('')
+    svg_lines.append('  <!-- Y grid -->')
     for line in y_grid:
-        svg_parts.append("  " + line)
-
-    svg_parts.append('')
-    svg_parts.append('  <!-- Referans cizgileri -->')
+        svg_lines.append("  " + line)
+    svg_lines.append('')
+    svg_lines.append('  <!-- Referans cizgileri -->')
     for line in ref_lines:
-        svg_parts.append("  " + line)
-
-    svg_parts.extend([
-        '',
-        '  <!-- Toplam doluluk -->',
-        '  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts),
-        '  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts),
-        '',
-        '  <!-- Aktif doluluk -->',
-        '  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts),
-        '  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts),
-        '',
-        '  <!-- Noktalar -->',
-        '  ' + toplam_circles,
-        '  ' + aktif_circles,
-        '',
-        '  <!-- X ekseni -->',
-    ])
+        svg_lines.append("  " + line)
+    svg_lines.append('')
+    svg_lines.append('  <!-- Toplam doluluk -->')
+    svg_lines.append('  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts))
+    svg_lines.append('  <polyline points="{}" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(toplam_pts))
+    svg_lines.append('')
+    svg_lines.append('  <!-- Aktif doluluk -->')
+    svg_lines.append('  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts))
+    svg_lines.append('  <polyline points="{}" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>'.format(aktif_pts))
+    svg_lines.append('')
+    svg_lines.append('  <!-- Noktalar -->')
+    svg_lines.append('  ' + toplam_circles)
+    svg_lines.append('  ' + aktif_circles)
+    svg_lines.append('')
+    svg_lines.append('  <!-- X ekseni -->')
     for line in x_labels:
-        svg_parts.append("  " + line)
+        svg_lines.append("  " + line)
+    svg_lines.append('')
+    svg_lines.append('  <!-- Legend -->')
+    svg_lines.append('  <g transform="translate({}, {})">'.format(margin_left, height - 55))
+    svg_lines.append('    <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>')
+    svg_lines.append('    <text x="18" y="10" font-size="11" fill="#c9d1d9">Toplam Doluluk</text>')
+    svg_lines.append('    <rect x="140" y="0" width="12" height="12" fill="#3b82f6" rx="2"/>')
+    svg_lines.append('    <text x="158" y="10" font-size="11" fill="#c9d1d9">Aktif Doluluk</text>')
+    svg_lines.append('  </g>')
+    svg_lines.append('</svg>')
 
-    svg_parts.extend([
-        '',
-        '  <!-- Legend -->',
-        '  <g transform="translate({}, {})">'.format(margin_left, height - 55),
-        '    <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>',
-        '    <text x="18" y="10" font-size="11" fill="#c9d1d9">Toplam Doluluk</text>',
-        '    <rect x="140" y="0" width="12" height="12" fill="#3b82f6" rx="2"/>',
-        '    <text x="158" y="10" font-size="11" fill="#c9d1d9">Aktif Doluluk</text>',
-        '  </g>',
-        '</svg>',
-    ])
-
-    svg = "\n".join(svg_parts)
+    svg = "\n".join(svg_lines)
 
     CHART_DIR.mkdir(parents=True, exist_ok=True)
     chart_path = CHART_DIR / "doluluk-trend.svg"
     with open(chart_path, "w", encoding="utf-8") as f:
         f.write(svg)
-    print("[OK] Chart yazildi: {}".format(chart_path.absolute()))
+    print("[OK] Chart yazildi: {} ({} bytes)".format(chart_path.absolute(), len(svg)))
     return 0
 
 
 if __name__ == "__main__":
     exit(main())
+
