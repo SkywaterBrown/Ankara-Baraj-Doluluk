@@ -12,7 +12,7 @@ ASKI Doluluk Trend Grafiği - Pure SVG
 
 import json
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import defaultdict
 
 DATA_FILE = Path("data/aski_doluluk.json")
@@ -20,15 +20,23 @@ CHART_DIR = Path("charts")
 
 
 def create_svg(points, title, width=800, height=400, show_ref=True, date_fmt=None):
-    """Verilen (tarih, toplam, aktif) noktalarından SVG oluşturur."""
+    """Verilen (tarih, toplam, aktif) noktalarından SVG oluşturur.
+    Tek nokta bile olsa genişletilmiş görünüm sağlar."""
 
     margin_top, margin_right, margin_bottom, margin_left = 40, 40, 80, 60
     chart_w = width - margin_left - margin_right
     chart_h = height - margin_top - margin_bottom
 
+    # Tek nokta varsa sahte ikinci nokta ekle (genişletilmiş görünüm için)
+    if len(points) == 1:
+        dt, t, a = points[0]
+        # Sahte nokta: +30 gün, aynı değerler
+        fake_dt = dt + timedelta(days=30)
+        points = [points[0], (fake_dt, t, a)]
+
     min_t = points[0][0].timestamp()
     max_t = points[-1][0].timestamp()
-    time_range = max_t - min_t if max_t != min_t else 1
+    time_range = max(1, max_t - min_t)
 
     def sx(dt):
         return margin_left + ((dt.timestamp() - min_t) / time_range) * chart_w
@@ -67,9 +75,10 @@ def create_svg(points, title, width=800, height=400, show_ref=True, date_fmt=Non
             ref_lines.append('<line x1="{}" y1="{:.1f}" x2="{}" y2="{:.1f}" stroke="{}" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>'.format(margin_left, y, width - margin_right, y, color))
             ref_lines.append('<text x="{}" y="{:.1f}" dominant-baseline="middle" font-size="9" fill="{}">{} ({}%)</text>'.format(width - margin_right + 5, y, color, label, val))
 
-    # Noktalar
-    toplam_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#22c55e"/>'.format(sx(dt), sy(t)) for dt, t, a in points)
-    aktif_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#3b82f6"/>'.format(sx(dt), sy(a)) for dt, t, a in points)
+    # Noktalar (sadece gerçek noktalar, sahte nokta yok)
+    real_points = points[:-1] if len(points) > 1 and points[-1][0] - points[-2][0] > timedelta(days=25) else points
+    toplam_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#22c55e"/>'.format(sx(dt), sy(t)) for dt, t, a in real_points)
+    aktif_circles = "".join('<circle cx="{:.1f}" cy="{:.1f}" r="3" fill="#3b82f6"/>'.format(sx(dt), sy(a)) for dt, t, a in real_points)
 
     svg_lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {} {}" width="100%" style="max-width:{}px;">'.format(width, height, width),
@@ -191,7 +200,7 @@ def main():
 
     # 1. Son 30 gün
     points = gunluk_ozet(veriler, 30)
-    if len(points) >= 2:
+    if len(points) >= 1:
         svg = create_svg(points, "Son 30 Gün - Günlük Ortalama", width=800, height=400)
         path = CHART_DIR / "doluluk-30g.svg"
         with open(path, "w", encoding="utf-8") as f:
@@ -200,7 +209,7 @@ def main():
 
     # 2. Son 90 gün
     points = gunluk_ozet(veriler, 90)
-    if len(points) >= 2:
+    if len(points) >= 1:
         svg = create_svg(points, "Son 90 Gün - Günlük Ortalama", width=800, height=400)
         path = CHART_DIR / "doluluk-90g.svg"
         with open(path, "w", encoding="utf-8") as f:
@@ -209,7 +218,7 @@ def main():
 
     # 3. Son 180 gün
     points = gunluk_ozet(veriler, 180)
-    if len(points) >= 2:
+    if len(points) >= 1:
         svg = create_svg(points, "Son 180 Gün - Günlük Ortalama", width=900, height=400)
         path = CHART_DIR / "doluluk-180g.svg"
         with open(path, "w", encoding="utf-8") as f:
@@ -218,7 +227,7 @@ def main():
 
     # 4. Son 360 gün
     points = gunluk_ozet(veriler, 360)
-    if len(points) >= 2:
+    if len(points) >= 1:
         svg = create_svg(points, "Son 360 Gün - Günlük Ortalama", width=900, height=400)
         path = CHART_DIR / "doluluk-360g.svg"
         with open(path, "w", encoding="utf-8") as f:
@@ -227,7 +236,7 @@ def main():
 
     # 5. Son 12 ay (aylık ortalama)
     points = aylik_ozet(veriler, 12)
-    if len(points) >= 2:
+    if len(points) >= 1:
         svg = create_svg(points, "Son 12 Ay - Aylık Ortalama", width=800, height=400, date_fmt="%m.%Y")
         path = CHART_DIR / "doluluk-12ay.svg"
         with open(path, "w", encoding="utf-8") as f:
