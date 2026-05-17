@@ -91,16 +91,29 @@ def main():
             f.write(svg)
         print("[OK] Badge yazildi: {} ({} bytes)".format(filepath.absolute(), len(svg)))
 
-    # README'yi yeniden yaz
+    # README'yi yeniden yaz - 5 grafik
     readme_content = """# Ankara Baraj Doluluk Oranlari
 
 ![Toplam Doluluk](badges/toplam-doluluk.svg)
 ![Aktif Doluluk](badges/aktif-doluluk.svg)
 ![Tarih](badges/tarih.svg)
 
-## Doluluk Trendi
+## Doluluk Trendleri
 
-![Doluluk Grafiği](charts/doluluk-trend.svg)
+### Son 30 Gün
+![Son 30 Gun](charts/doluluk-30g.svg)
+
+### Son 90 Gün
+![Son 90 Gun](charts/doluluk-90g.svg)
+
+### Son 180 Gün
+![Son 180 Gun](charts/doluluk-180g.svg)
+
+### Son 360 Gün
+![Son 360 Gun](charts/doluluk-360g.svg)
+
+### Son 12 Ay (Aylık Ortalama)
+![Son 12 Ay](charts/doluluk-12ay.svg)
 
 > ASKI verileri ile otomatik guncellenir. Her 8 saatte bir yenilenir.
 
