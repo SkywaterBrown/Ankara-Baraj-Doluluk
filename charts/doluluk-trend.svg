@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" style="max-width:800px;">
+  <rect width="800" height="400" fill="#0d1117" rx="6"/>
+  <text x="400.0" y="25" text-anchor="middle" font-size="16" font-weight="bold" fill="#c9d1d9">Ankara Baraj Doluluk Trendi</text>
+
+  <!-- Y grid -->
+  <line x1="60" y1="320.0" x2="760" y2="320.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="320.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">0%</text>
+  <line x1="60" y1="264.0" x2="760" y2="264.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="264.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">20%</text>
+  <line x1="60" y1="208.0" x2="760" y2="208.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="208.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">40%</text>
+  <line x1="60" y1="152.0" x2="760" y2="152.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="152.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">60%</text>
+  <line x1="60" y1="96.0" x2="760" y2="96.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="96.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">80%</text>
+  <line x1="60" y1="40.0" x2="760" y2="40.0" stroke="#333" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+  <text x="50" y="40.0" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#888">100%</text>
+
+  <!-- Referans cizgileri -->
+  <line x1="60" y1="236.0" x2="760" y2="236.0" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>
+  <text x="765" y="236.0" dominant-baseline="middle" font-size="9" fill="#ef4444">Kritik (30%)</text>
+  <line x1="60" y1="180.0" x2="760" y2="180.0" stroke="#eab308" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>
+  <text x="765" y="180.0" dominant-baseline="middle" font-size="9" fill="#eab308">Normal (50%)</text>
+
+  <!-- Toplam doluluk -->
+  <polyline points="60.0,193.2 66.1,193.2 158.4,193.2 249.4,192.5 362.0,192.5 439.7,192.5 444.3,192.5 531.7,192.5 619.6,192.0 730.3,192.0 760.0,192.0" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 66.1,193.2 158.4,193.2 249.4,192.5 362.0,192.5 439.7,192.5 444.3,192.5 531.7,192.5 619.6,192.0 730.3,192.0 760.0,192.0" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Aktif doluluk -->
+  <polyline points="60.0,211.1 66.1,211.1 158.4,211.1 249.4,210.2 362.0,210.2 439.7,210.2 444.3,210.2 531.7,210.2 619.6,209.7 730.3,209.7 760.0,209.7" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 66.1,211.1 158.4,211.1 249.4,210.2 362.0,210.2 439.7,210.2 444.3,210.2 531.7,210.2 619.6,209.7 730.3,209.7 760.0,209.7" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Noktalar -->
+  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="66.1" cy="193.2" r="3" fill="#22c55e"/><circle cx="158.4" cy="193.2" r="3" fill="#22c55e"/><circle cx="249.4" cy="192.5" r="3" fill="#22c55e"/><circle cx="362.0" cy="192.5" r="3" fill="#22c55e"/><circle cx="439.7" cy="192.5" r="3" fill="#22c55e"/><circle cx="444.3" cy="192.5" r="3" fill="#22c55e"/><circle cx="531.7" cy="192.5" r="3" fill="#22c55e"/><circle cx="619.6" cy="192.0" r="3" fill="#22c55e"/><circle cx="730.3" cy="192.0" r="3" fill="#22c55e"/><circle cx="760.0" cy="192.0" r="3" fill="#22c55e"/>
+  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="66.1" cy="211.1" r="3" fill="#3b82f6"/><circle cx="158.4" cy="211.1" r="3" fill="#3b82f6"/><circle cx="249.4" cy="210.2" r="3" fill="#3b82f6"/><circle cx="362.0" cy="210.2" r="3" fill="#3b82f6"/><circle cx="439.7" cy="210.2" r="3" fill="#3b82f6"/><circle cx="444.3" cy="210.2" r="3" fill="#3b82f6"/><circle cx="531.7" cy="210.2" r="3" fill="#3b82f6"/><circle cx="619.6" cy="209.7" r="3" fill="#3b82f6"/><circle cx="730.3" cy="209.7" r="3" fill="#3b82f6"/><circle cx="760.0" cy="209.7" r="3" fill="#3b82f6"/>
+
+  <!-- X ekseni -->
+  <text x="60.0" y="380" text-anchor="middle" font-size="10" fill="#888">15.05 21:28</text>
+  <text x="66.1" y="380" text-anchor="middle" font-size="10" fill="#888">15.05 21:51</text>
+  <text x="158.4" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 03:52</text>
+  <text x="249.4" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 09:48</text>
+  <text x="362.0" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 17:08</text>
+  <text x="439.7" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 22:12</text>
+  <text x="444.3" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 22:30</text>
+  <text x="531.7" y="380" text-anchor="middle" font-size="10" fill="#888">17.05 04:12</text>
+  <text x="619.6" y="380" text-anchor="middle" font-size="10" fill="#888">17.05 09:55</text>
+  <text x="730.3" y="380" text-anchor="middle" font-size="10" fill="#888">17.05 17:08</text>
+  <text x="760.0" y="380" text-anchor="middle" font-size="10" fill="#888">17.05 19:04</text>
+
+  <!-- Legend -->
+  <g transform="translate(60, 345)">
+    <rect x="0" y="0" width="12" height="12" fill="#22c55e" rx="2"/>
+    <text x="18" y="10" font-size="11" fill="#c9d1d9">Toplam Doluluk</text>
+    <rect x="140" y="0" width="12" height="12" fill="#3b82f6" rx="2"/>
+    <text x="158" y="10" font-size="11" fill="#c9d1d9">Aktif Doluluk</text>
+  </g>
+</svg>
