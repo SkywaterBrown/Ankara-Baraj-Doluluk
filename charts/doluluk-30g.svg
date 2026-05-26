@@ -23,29 +23,24 @@
   <text x="765" y="180.0" dominant-baseline="middle" font-size="9" fill="#eab308">Normal (50%)</text>
 
   <!-- Toplam doluluk -->
-  <polyline points="60.0,193.2 130.0,192.5 200.0,192.0 270.0,191.6 340.0,191.1 410.0,190.8 480.0,190.4 550.0,190.1 620.0,189.6 690.0,188.8 760.0,187.8" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,193.2 130.0,192.5 200.0,192.0 270.0,191.6 340.0,191.1 410.0,190.8 480.0,190.4 550.0,190.1 620.0,189.6 690.0,188.8 760.0,187.8" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 123.6,192.5 187.3,192.0 250.9,191.6 314.5,191.1 378.2,190.8 441.8,190.4 505.5,190.1 569.1,189.6 632.7,188.8 696.4,187.8 760.0,187.0" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 123.6,192.5 187.3,192.0 250.9,191.6 314.5,191.1 378.2,190.8 441.8,190.4 505.5,190.1 569.1,189.6 632.7,188.8 696.4,187.8 760.0,187.0" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Aktif doluluk -->
-  <polyline points="60.0,211.1 130.0,210.2 200.0,209.7 270.0,209.2 340.0,208.7 410.0,208.3 480.0,207.9 550.0,207.5 620.0,207.0 690.0,206.2 760.0,205.0" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,211.1 130.0,210.2 200.0,209.7 270.0,209.2 340.0,208.7 410.0,208.3 480.0,207.9 550.0,207.5 620.0,207.0 690.0,206.2 760.0,205.0" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 123.6,210.2 187.3,209.7 250.9,209.2 314.5,208.7 378.2,208.3 441.8,207.9 505.5,207.5 569.1,207.0 632.7,206.2 696.4,205.0 760.0,204.1" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 123.6,210.2 187.3,209.7 250.9,209.2 314.5,208.7 378.2,208.3 441.8,207.9 505.5,207.5 569.1,207.0 632.7,206.2 696.4,205.0 760.0,204.1" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Noktalar -->
-  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="130.0" cy="192.5" r="3" fill="#22c55e"/><circle cx="200.0" cy="192.0" r="3" fill="#22c55e"/><circle cx="270.0" cy="191.6" r="3" fill="#22c55e"/><circle cx="340.0" cy="191.1" r="3" fill="#22c55e"/><circle cx="410.0" cy="190.8" r="3" fill="#22c55e"/><circle cx="480.0" cy="190.4" r="3" fill="#22c55e"/><circle cx="550.0" cy="190.1" r="3" fill="#22c55e"/><circle cx="620.0" cy="189.6" r="3" fill="#22c55e"/><circle cx="690.0" cy="188.8" r="3" fill="#22c55e"/><circle cx="760.0" cy="187.8" r="3" fill="#22c55e"/>
-  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="130.0" cy="210.2" r="3" fill="#3b82f6"/><circle cx="200.0" cy="209.7" r="3" fill="#3b82f6"/><circle cx="270.0" cy="209.2" r="3" fill="#3b82f6"/><circle cx="340.0" cy="208.7" r="3" fill="#3b82f6"/><circle cx="410.0" cy="208.3" r="3" fill="#3b82f6"/><circle cx="480.0" cy="207.9" r="3" fill="#3b82f6"/><circle cx="550.0" cy="207.5" r="3" fill="#3b82f6"/><circle cx="620.0" cy="207.0" r="3" fill="#3b82f6"/><circle cx="690.0" cy="206.2" r="3" fill="#3b82f6"/><circle cx="760.0" cy="205.0" r="3" fill="#3b82f6"/>
+  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="123.6" cy="192.5" r="3" fill="#22c55e"/><circle cx="187.3" cy="192.0" r="3" fill="#22c55e"/><circle cx="250.9" cy="191.6" r="3" fill="#22c55e"/><circle cx="314.5" cy="191.1" r="3" fill="#22c55e"/><circle cx="378.2" cy="190.8" r="3" fill="#22c55e"/><circle cx="441.8" cy="190.4" r="3" fill="#22c55e"/><circle cx="505.5" cy="190.1" r="3" fill="#22c55e"/><circle cx="569.1" cy="189.6" r="3" fill="#22c55e"/><circle cx="632.7" cy="188.8" r="3" fill="#22c55e"/><circle cx="696.4" cy="187.8" r="3" fill="#22c55e"/><circle cx="760.0" cy="187.0" r="3" fill="#22c55e"/>
+  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="123.6" cy="210.2" r="3" fill="#3b82f6"/><circle cx="187.3" cy="209.7" r="3" fill="#3b82f6"/><circle cx="250.9" cy="209.2" r="3" fill="#3b82f6"/><circle cx="314.5" cy="208.7" r="3" fill="#3b82f6"/><circle cx="378.2" cy="208.3" r="3" fill="#3b82f6"/><circle cx="441.8" cy="207.9" r="3" fill="#3b82f6"/><circle cx="505.5" cy="207.5" r="3" fill="#3b82f6"/><circle cx="569.1" cy="207.0" r="3" fill="#3b82f6"/><circle cx="632.7" cy="206.2" r="3" fill="#3b82f6"/><circle cx="696.4" cy="205.0" r="3" fill="#3b82f6"/><circle cx="760.0" cy="204.1" r="3" fill="#3b82f6"/>
 
   <!-- X ekseni -->
   <text x="60.0" y="380" text-anchor="middle" font-size="10" fill="#888">14.05 00:00</text>
-  <text x="130.0" y="380" text-anchor="middle" font-size="10" fill="#888">15.05 00:00</text>
-  <text x="200.0" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
-  <text x="270.0" y="380" text-anchor="middle" font-size="10" fill="#888">17.05 00:00</text>
-  <text x="340.0" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
-  <text x="410.0" y="380" text-anchor="middle" font-size="10" fill="#888">19.05 00:00</text>
-  <text x="480.0" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
-  <text x="550.0" y="380" text-anchor="middle" font-size="10" fill="#888">21.05 00:00</text>
-  <text x="620.0" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
-  <text x="690.0" y="380" text-anchor="middle" font-size="10" fill="#888">23.05 00:00</text>
-  <text x="760.0" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
+  <text x="187.3" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
+  <text x="314.5" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
+  <text x="441.8" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
+  <text x="569.1" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
+  <text x="696.4" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
 
   <!-- Legend -->
   <g transform="translate(60, 345)">
