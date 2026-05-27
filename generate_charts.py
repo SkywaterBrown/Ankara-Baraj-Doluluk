@@ -73,7 +73,7 @@ def create_svg(points, title, width=800, height=400, show_ref=True, date_fmt=Non
         for val, color, label in [(30, "#ef4444", "Kritik"), (50, "#eab308", "Normal")]:
             y = sy(val)
             ref_lines.append('<line x1="{}" y1="{:.1f}" x2="{}" y2="{:.1f}" stroke="{}" stroke-width="1" stroke-dasharray="2,2" opacity="0.7"/>'.format(margin_left, y, width - margin_right, y, color))
-            ref_lines.append('<text x="{}" y="{:.1f}" dominant-baseline="middle" font-size="9" fill="{}">{} ({}%)</text>'.format(width - margin_right + 5, y, color, label, val))
+            ref_lines.append('<text x="{}" y="{:.1f}" dominant-baseline="middle" font-size="9" fill="{}">{} ({}%)</text>'.format(width - margin_right - 5, y, color, label, val))
 
     # Noktalar (sadece gerçek noktalar, sahte nokta yok)
     real_points = points[:-1] if len(points) > 1 and points[-1][0] - points[-2][0] > timedelta(days=25) else points
