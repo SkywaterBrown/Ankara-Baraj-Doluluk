@@ -23,25 +23,25 @@
   <text x="755" y="180.0" dominant-baseline="middle" font-size="9" fill="#eab308">Normal (50%)</text>
 
   <!-- Toplam doluluk -->
-  <polyline points="60.0,193.2 118.3,192.5 176.7,192.0 235.0,191.6 293.3,191.1 351.7,190.8 410.0,190.4 468.3,190.1 526.7,189.6 585.0,188.8 643.3,187.8 701.7,187.0 760.0,186.2" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,193.2 118.3,192.5 176.7,192.0 235.0,191.6 293.3,191.1 351.7,190.8 410.0,190.4 468.3,190.1 526.7,189.6 585.0,188.8 643.3,187.8 701.7,187.0 760.0,186.2" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 113.8,192.5 167.7,192.0 221.5,191.6 275.4,191.1 329.2,190.8 383.1,190.4 436.9,190.1 490.8,189.6 544.6,188.8 598.5,187.8 652.3,187.0 706.2,186.2 760.0,185.6" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 113.8,192.5 167.7,192.0 221.5,191.6 275.4,191.1 329.2,190.8 383.1,190.4 436.9,190.1 490.8,189.6 544.6,188.8 598.5,187.8 652.3,187.0 706.2,186.2 760.0,185.6" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Aktif doluluk -->
-  <polyline points="60.0,211.1 118.3,210.2 176.7,209.7 235.0,209.2 293.3,208.7 351.7,208.3 410.0,207.9 468.3,207.5 526.7,207.0 585.0,206.2 643.3,205.0 701.7,204.1 760.0,203.2" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,211.1 118.3,210.2 176.7,209.7 235.0,209.2 293.3,208.7 351.7,208.3 410.0,207.9 468.3,207.5 526.7,207.0 585.0,206.2 643.3,205.0 701.7,204.1 760.0,203.2" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 113.8,210.2 167.7,209.7 221.5,209.2 275.4,208.7 329.2,208.3 383.1,207.9 436.9,207.5 490.8,207.0 544.6,206.2 598.5,205.0 652.3,204.1 706.2,203.2 760.0,202.5" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 113.8,210.2 167.7,209.7 221.5,209.2 275.4,208.7 329.2,208.3 383.1,207.9 436.9,207.5 490.8,207.0 544.6,206.2 598.5,205.0 652.3,204.1 706.2,203.2 760.0,202.5" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Noktalar -->
-  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="118.3" cy="192.5" r="3" fill="#22c55e"/><circle cx="176.7" cy="192.0" r="3" fill="#22c55e"/><circle cx="235.0" cy="191.6" r="3" fill="#22c55e"/><circle cx="293.3" cy="191.1" r="3" fill="#22c55e"/><circle cx="351.7" cy="190.8" r="3" fill="#22c55e"/><circle cx="410.0" cy="190.4" r="3" fill="#22c55e"/><circle cx="468.3" cy="190.1" r="3" fill="#22c55e"/><circle cx="526.7" cy="189.6" r="3" fill="#22c55e"/><circle cx="585.0" cy="188.8" r="3" fill="#22c55e"/><circle cx="643.3" cy="187.8" r="3" fill="#22c55e"/><circle cx="701.7" cy="187.0" r="3" fill="#22c55e"/><circle cx="760.0" cy="186.2" r="3" fill="#22c55e"/>
-  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="118.3" cy="210.2" r="3" fill="#3b82f6"/><circle cx="176.7" cy="209.7" r="3" fill="#3b82f6"/><circle cx="235.0" cy="209.2" r="3" fill="#3b82f6"/><circle cx="293.3" cy="208.7" r="3" fill="#3b82f6"/><circle cx="351.7" cy="208.3" r="3" fill="#3b82f6"/><circle cx="410.0" cy="207.9" r="3" fill="#3b82f6"/><circle cx="468.3" cy="207.5" r="3" fill="#3b82f6"/><circle cx="526.7" cy="207.0" r="3" fill="#3b82f6"/><circle cx="585.0" cy="206.2" r="3" fill="#3b82f6"/><circle cx="643.3" cy="205.0" r="3" fill="#3b82f6"/><circle cx="701.7" cy="204.1" r="3" fill="#3b82f6"/><circle cx="760.0" cy="203.2" r="3" fill="#3b82f6"/>
+  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="113.8" cy="192.5" r="3" fill="#22c55e"/><circle cx="167.7" cy="192.0" r="3" fill="#22c55e"/><circle cx="221.5" cy="191.6" r="3" fill="#22c55e"/><circle cx="275.4" cy="191.1" r="3" fill="#22c55e"/><circle cx="329.2" cy="190.8" r="3" fill="#22c55e"/><circle cx="383.1" cy="190.4" r="3" fill="#22c55e"/><circle cx="436.9" cy="190.1" r="3" fill="#22c55e"/><circle cx="490.8" cy="189.6" r="3" fill="#22c55e"/><circle cx="544.6" cy="188.8" r="3" fill="#22c55e"/><circle cx="598.5" cy="187.8" r="3" fill="#22c55e"/><circle cx="652.3" cy="187.0" r="3" fill="#22c55e"/><circle cx="706.2" cy="186.2" r="3" fill="#22c55e"/><circle cx="760.0" cy="185.6" r="3" fill="#22c55e"/>
+  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="113.8" cy="210.2" r="3" fill="#3b82f6"/><circle cx="167.7" cy="209.7" r="3" fill="#3b82f6"/><circle cx="221.5" cy="209.2" r="3" fill="#3b82f6"/><circle cx="275.4" cy="208.7" r="3" fill="#3b82f6"/><circle cx="329.2" cy="208.3" r="3" fill="#3b82f6"/><circle cx="383.1" cy="207.9" r="3" fill="#3b82f6"/><circle cx="436.9" cy="207.5" r="3" fill="#3b82f6"/><circle cx="490.8" cy="207.0" r="3" fill="#3b82f6"/><circle cx="544.6" cy="206.2" r="3" fill="#3b82f6"/><circle cx="598.5" cy="205.0" r="3" fill="#3b82f6"/><circle cx="652.3" cy="204.1" r="3" fill="#3b82f6"/><circle cx="706.2" cy="203.2" r="3" fill="#3b82f6"/><circle cx="760.0" cy="202.5" r="3" fill="#3b82f6"/>
 
   <!-- X ekseni -->
   <text x="60.0" y="380" text-anchor="middle" font-size="10" fill="#888">14.05 00:00</text>
-  <text x="176.7" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
-  <text x="293.3" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
-  <text x="410.0" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
-  <text x="526.7" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
-  <text x="643.3" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
-  <text x="760.0" y="380" text-anchor="middle" font-size="10" fill="#888">26.05 00:00</text>
+  <text x="167.7" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
+  <text x="275.4" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
+  <text x="383.1" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
+  <text x="490.8" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
+  <text x="598.5" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
+  <text x="706.2" y="380" text-anchor="middle" font-size="10" fill="#888">26.05 00:00</text>
 
   <!-- Legend -->
   <g transform="translate(60, 345)">
