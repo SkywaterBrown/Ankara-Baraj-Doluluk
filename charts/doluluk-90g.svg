@@ -23,26 +23,26 @@
   <text x="745" y="180.0" dominant-baseline="middle" font-size="9" fill="#eab308">Normal (50%)</text>
 
   <!-- Toplam doluluk -->
-  <polyline points="60.0,193.2 110.0,192.5 160.0,192.0 210.0,191.6 260.0,191.1 310.0,190.8 360.0,190.4 410.0,190.1 460.0,189.6 510.0,188.8 560.0,187.8 610.0,187.0 660.0,186.2 710.0,185.6 760.0,185.0" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,193.2 110.0,192.5 160.0,192.0 210.0,191.6 260.0,191.1 310.0,190.8 360.0,190.4 410.0,190.1 460.0,189.6 510.0,188.8 560.0,187.8 610.0,187.0 660.0,186.2 710.0,185.6 760.0,185.0" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 106.7,192.5 153.3,192.0 200.0,191.6 246.7,191.1 293.3,190.8 340.0,190.4 386.7,190.1 433.3,189.6 480.0,188.8 526.7,187.8 573.3,187.0 620.0,186.2 666.7,185.6 713.3,185.0 760.0,184.3" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,193.2 106.7,192.5 153.3,192.0 200.0,191.6 246.7,191.1 293.3,190.8 340.0,190.4 386.7,190.1 433.3,189.6 480.0,188.8 526.7,187.8 573.3,187.0 620.0,186.2 666.7,185.6 713.3,185.0 760.0,184.3" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Aktif doluluk -->
-  <polyline points="60.0,211.1 110.0,210.2 160.0,209.7 210.0,209.2 260.0,208.7 310.0,208.3 360.0,207.9 410.0,207.5 460.0,207.0 510.0,206.2 560.0,205.0 610.0,204.1 660.0,203.2 710.0,202.5 760.0,201.9" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,211.1 110.0,210.2 160.0,209.7 210.0,209.2 260.0,208.7 310.0,208.3 360.0,207.9 410.0,207.5 460.0,207.0 510.0,206.2 560.0,205.0 610.0,204.1 660.0,203.2 710.0,202.5 760.0,201.9" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 106.7,210.2 153.3,209.7 200.0,209.2 246.7,208.7 293.3,208.3 340.0,207.9 386.7,207.5 433.3,207.0 480.0,206.2 526.7,205.0 573.3,204.1 620.0,203.2 666.7,202.5 713.3,201.9 760.0,201.0" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,211.1 106.7,210.2 153.3,209.7 200.0,209.2 246.7,208.7 293.3,208.3 340.0,207.9 386.7,207.5 433.3,207.0 480.0,206.2 526.7,205.0 573.3,204.1 620.0,203.2 666.7,202.5 713.3,201.9 760.0,201.0" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Noktalar -->
-  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="110.0" cy="192.5" r="3" fill="#22c55e"/><circle cx="160.0" cy="192.0" r="3" fill="#22c55e"/><circle cx="210.0" cy="191.6" r="3" fill="#22c55e"/><circle cx="260.0" cy="191.1" r="3" fill="#22c55e"/><circle cx="310.0" cy="190.8" r="3" fill="#22c55e"/><circle cx="360.0" cy="190.4" r="3" fill="#22c55e"/><circle cx="410.0" cy="190.1" r="3" fill="#22c55e"/><circle cx="460.0" cy="189.6" r="3" fill="#22c55e"/><circle cx="510.0" cy="188.8" r="3" fill="#22c55e"/><circle cx="560.0" cy="187.8" r="3" fill="#22c55e"/><circle cx="610.0" cy="187.0" r="3" fill="#22c55e"/><circle cx="660.0" cy="186.2" r="3" fill="#22c55e"/><circle cx="710.0" cy="185.6" r="3" fill="#22c55e"/><circle cx="760.0" cy="185.0" r="3" fill="#22c55e"/>
-  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="110.0" cy="210.2" r="3" fill="#3b82f6"/><circle cx="160.0" cy="209.7" r="3" fill="#3b82f6"/><circle cx="210.0" cy="209.2" r="3" fill="#3b82f6"/><circle cx="260.0" cy="208.7" r="3" fill="#3b82f6"/><circle cx="310.0" cy="208.3" r="3" fill="#3b82f6"/><circle cx="360.0" cy="207.9" r="3" fill="#3b82f6"/><circle cx="410.0" cy="207.5" r="3" fill="#3b82f6"/><circle cx="460.0" cy="207.0" r="3" fill="#3b82f6"/><circle cx="510.0" cy="206.2" r="3" fill="#3b82f6"/><circle cx="560.0" cy="205.0" r="3" fill="#3b82f6"/><circle cx="610.0" cy="204.1" r="3" fill="#3b82f6"/><circle cx="660.0" cy="203.2" r="3" fill="#3b82f6"/><circle cx="710.0" cy="202.5" r="3" fill="#3b82f6"/><circle cx="760.0" cy="201.9" r="3" fill="#3b82f6"/>
+  <circle cx="60.0" cy="193.2" r="3" fill="#22c55e"/><circle cx="106.7" cy="192.5" r="3" fill="#22c55e"/><circle cx="153.3" cy="192.0" r="3" fill="#22c55e"/><circle cx="200.0" cy="191.6" r="3" fill="#22c55e"/><circle cx="246.7" cy="191.1" r="3" fill="#22c55e"/><circle cx="293.3" cy="190.8" r="3" fill="#22c55e"/><circle cx="340.0" cy="190.4" r="3" fill="#22c55e"/><circle cx="386.7" cy="190.1" r="3" fill="#22c55e"/><circle cx="433.3" cy="189.6" r="3" fill="#22c55e"/><circle cx="480.0" cy="188.8" r="3" fill="#22c55e"/><circle cx="526.7" cy="187.8" r="3" fill="#22c55e"/><circle cx="573.3" cy="187.0" r="3" fill="#22c55e"/><circle cx="620.0" cy="186.2" r="3" fill="#22c55e"/><circle cx="666.7" cy="185.6" r="3" fill="#22c55e"/><circle cx="713.3" cy="185.0" r="3" fill="#22c55e"/><circle cx="760.0" cy="184.3" r="3" fill="#22c55e"/>
+  <circle cx="60.0" cy="211.1" r="3" fill="#3b82f6"/><circle cx="106.7" cy="210.2" r="3" fill="#3b82f6"/><circle cx="153.3" cy="209.7" r="3" fill="#3b82f6"/><circle cx="200.0" cy="209.2" r="3" fill="#3b82f6"/><circle cx="246.7" cy="208.7" r="3" fill="#3b82f6"/><circle cx="293.3" cy="208.3" r="3" fill="#3b82f6"/><circle cx="340.0" cy="207.9" r="3" fill="#3b82f6"/><circle cx="386.7" cy="207.5" r="3" fill="#3b82f6"/><circle cx="433.3" cy="207.0" r="3" fill="#3b82f6"/><circle cx="480.0" cy="206.2" r="3" fill="#3b82f6"/><circle cx="526.7" cy="205.0" r="3" fill="#3b82f6"/><circle cx="573.3" cy="204.1" r="3" fill="#3b82f6"/><circle cx="620.0" cy="203.2" r="3" fill="#3b82f6"/><circle cx="666.7" cy="202.5" r="3" fill="#3b82f6"/><circle cx="713.3" cy="201.9" r="3" fill="#3b82f6"/><circle cx="760.0" cy="201.0" r="3" fill="#3b82f6"/>
 
   <!-- X ekseni -->
   <text x="60.0" y="380" text-anchor="middle" font-size="10" fill="#888">14.05 00:00</text>
-  <text x="160.0" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
-  <text x="260.0" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
-  <text x="360.0" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
-  <text x="460.0" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
-  <text x="560.0" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
-  <text x="660.0" y="380" text-anchor="middle" font-size="10" fill="#888">26.05 00:00</text>
-  <text x="760.0" y="380" text-anchor="middle" font-size="10" fill="#888">28.05 00:00</text>
+  <text x="153.3" y="380" text-anchor="middle" font-size="10" fill="#888">16.05 00:00</text>
+  <text x="246.7" y="380" text-anchor="middle" font-size="10" fill="#888">18.05 00:00</text>
+  <text x="340.0" y="380" text-anchor="middle" font-size="10" fill="#888">20.05 00:00</text>
+  <text x="433.3" y="380" text-anchor="middle" font-size="10" fill="#888">22.05 00:00</text>
+  <text x="526.7" y="380" text-anchor="middle" font-size="10" fill="#888">24.05 00:00</text>
+  <text x="620.0" y="380" text-anchor="middle" font-size="10" fill="#888">26.05 00:00</text>
+  <text x="713.3" y="380" text-anchor="middle" font-size="10" fill="#888">28.05 00:00</text>
 
   <!-- Legend -->
   <g transform="translate(60, 345)">
