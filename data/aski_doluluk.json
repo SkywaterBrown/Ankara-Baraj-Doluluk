@@ -1313,7 +1313,13 @@
       "tarih_aski": "24.07.2026",
       "toplam_doluluk": 45.14,
       "aktif_doluluk": 38.75
+    },
+    {
+      "timestamp": "2026-07-26T03:44:47.759155+00:00",
+      "tarih_aski": "24.07.2026",
+      "toplam_doluluk": 45.14,
+      "aktif_doluluk": 38.75
     }
   ],
-  "son_guncelleme": "2026-07-25T17:09:14.245552+00:00"
+  "son_guncelleme": "2026-07-26T03:44:47.759155+00:00"
 }
