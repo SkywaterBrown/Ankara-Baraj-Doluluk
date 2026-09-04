@@ -23,8 +23,8 @@
   <text x="745" y="180.0" dominant-baseline="middle" font-size="9" fill="#eab308">Normal (50%)</text>
 
   <!-- Toplam doluluk -->
-  <polyline points="60.0,189.2 236.4,183.2 407.2,190.6 583.6,199.8 760.0,205.0" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="60.0,189.2 236.4,183.2 407.2,190.6 583.6,199.8 760.0,205.0" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,189.2 236.4,183.2 407.2,190.6 583.6,199.8 760.0,205.1" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="60.0,189.2 236.4,183.2 407.2,190.6 583.6,199.8 760.0,205.1" fill="none" stroke="#22c55e" stroke-width="5" opacity="0.1" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Aktif doluluk -->
   <polyline points="60.0,206.6 236.4,199.8 407.2,208.2 583.6,218.4 760.0,224.3" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
