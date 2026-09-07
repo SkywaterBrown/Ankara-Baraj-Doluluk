@@ -2063,7 +2063,13 @@
       "tarih_aski": "5.09.2026",
       "toplam_doluluk": 40.57,
       "aktif_doluluk": 33.65
+    },
+    {
+      "timestamp": "2026-09-07T14:11:34.050005+00:00",
+      "tarih_aski": "6.09.2026",
+      "toplam_doluluk": 40.46,
+      "aktif_doluluk": 33.53
     }
   ],
-  "son_guncelleme": "2026-09-07T04:20:15.868929+00:00"
+  "son_guncelleme": "2026-09-07T14:11:34.050005+00:00"
 }
