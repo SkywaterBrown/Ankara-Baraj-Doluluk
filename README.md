@@ -29,7 +29,7 @@
 ## Son Veri
 ```json
 {
-  "timestamp": "2026-09-24T19:56:08.950104+00:00",
+  "timestamp": "2026-09-25T04:42:23.210888+00:00",
   "tarih_aski": "23.09.2026",
   "toplam_doluluk": 38.79,
   "aktif_doluluk": 31.66
