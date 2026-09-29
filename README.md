@@ -29,9 +29,9 @@
 ## Son Veri
 ```json
 {
-  "timestamp": "2026-09-29T05:32:35.486822+00:00",
-  "tarih_aski": "27.09.2026",
-  "toplam_doluluk": 38.45,
-  "aktif_doluluk": 31.28
+  "timestamp": "2026-09-29T14:47:13.919862+00:00",
+  "tarih_aski": "28.09.2026",
+  "toplam_doluluk": 38.38,
+  "aktif_doluluk": 31.21
 }
 ```
