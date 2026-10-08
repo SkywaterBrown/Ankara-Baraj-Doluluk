@@ -2615,7 +2615,13 @@
       "tarih_aski": "7.10.2026",
       "toplam_doluluk": 37.66,
       "aktif_doluluk": 30.41
+    },
+    {
+      "timestamp": "2026-10-08T21:14:22.406192+00:00",
+      "tarih_aski": "7.10.2026",
+      "toplam_doluluk": 37.66,
+      "aktif_doluluk": 30.41
     }
   ],
-  "son_guncelleme": "2026-10-08T15:29:27.243028+00:00"
+  "son_guncelleme": "2026-10-08T21:14:22.406192+00:00"
 }
